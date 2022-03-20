@@ -1,0 +1,32 @@
+.homeSection {
+  // background-image: url("../../assets/bank-tree.jpeg");
+  // // background-position: left -280px;
+  // background-size: 100%;
+  // background-repeat: no-repeat;
+  height: 350px;
+  position: relative;
+  img {
+    object-fit: cover;
+    object-position: left -250px;
+
+    width: 100%;
+    height: 120%;
+  }
+  .textContainer {
+    background-color: rgb(255, 255, 255);
+    width: 300px;
+    position: absolute;
+    top: 50%;
+    right: 100px;
+    padding: 0.8rem;
+    padding-left: 1.8rem;
+    transform: translateY(-40%);
+    color: #2c3e50;
+    h2 {
+      font-size: 1.5rem;
+    }
+    p {
+      font-size: 1.2rem;
+    }
+  }
+}
