@@ -29,25 +29,23 @@ const Home = () => {
           <img src={msg} alt="" />
           <h3>You are our #1 priority</h3>
           <p>
-            Need to talk to a reprensentative ? You can get in touch <br />
-            through our 24/7 chat or through a phone call in less <br />
-            than 5 minutes.
+            Need to talk to a reprensentative ? You can get in touch through our
+            24/7 chat or through a phone call in less than 5 minutes.
           </p>
         </div>
         <div className="feature">
           <img src={bill} alt="" />
           <h3>More savings means higher rates</h3>
           <p>
-            The more you save with us, the higher your interest <br />
-            rate will be!
+            The more you save with us, the higher your interest rate will be!
           </p>
         </div>
         <div className="feature">
           <img src={security} alt="" />
           <h3>Security you can trust</h3>
           <p>
-            We use top of the line encryption to make sure your <br /> data and
-            money is always safe.
+            We use top of the line encryption to make sure your data and money
+            is always safe.
           </p>
         </div>
       </section>

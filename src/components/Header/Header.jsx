@@ -10,7 +10,7 @@ const Header = () => {
     <header>
       <img src={argentBankLogo} alt="bank logo" />
       <NavLink className="signIn" to="/signin">
-        <i class="fa fa-user-circle"></i>
+        <i className="fa fa-user-circle"></i>
         Sign In
       </NavLink>
     </header>
