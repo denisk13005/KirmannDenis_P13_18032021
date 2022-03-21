@@ -1,16 +1,17 @@
+#homeContainer {
+  display: flex;
+  flex-direction: column;
+}
 .homeSection {
-  // background-image: url("../../assets/bank-tree.jpeg");
-  // // background-position: left -280px;
-  // background-size: 100%;
-  // background-repeat: no-repeat;
-  height: 350px;
+  height: 400px;
   position: relative;
+  overflow: hidden;
   img {
     object-fit: cover;
-    object-position: left -250px;
+    object-position: left -280px;
 
     width: 100%;
-    height: 120%;
+    height: 150%;
   }
   .textContainer {
     background-color: rgb(255, 255, 255);
@@ -20,13 +21,43 @@
     right: 100px;
     padding: 0.8rem;
     padding-left: 1.8rem;
-    transform: translateY(-40%);
+    transform: translateY(-50%);
     color: #2c3e50;
     h2 {
       font-size: 1.5rem;
     }
     p {
       font-size: 1.2rem;
+    }
+  }
+}
+.features {
+  width: 100%;
+  height: 38vh;
+  display: flex;
+  justify-content: space-around;
+  .feature {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 22%;
+    margin-top: 20px;
+    img {
+      width: 100px;
+      border: 10px solid #00bc77;
+      border-radius: 50%;
+      padding: 1rem;
+    }
+    h3 {
+      color: #222;
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      text-align: center;
+      color: #2c3e50;
     }
   }
 }
