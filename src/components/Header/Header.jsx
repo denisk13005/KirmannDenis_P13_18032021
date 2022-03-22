@@ -6,7 +6,7 @@ import SignIn from "../../pages/SignIn/SignIn"
 import "./header.scss"
 
 const Header = () => {
-  const [logged, setLogged] = useState(true)
+  const [logged, setLogged] = useState(false)
   const [userName, setUserName] = useState("Tony")
   //useSelector(logged,userName)
 
