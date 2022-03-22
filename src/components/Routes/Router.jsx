@@ -1,6 +1,6 @@
 import React from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Dashboard from "../../pages/Dashboard/Dashboard"
+import User from "../../pages/User/User"
 import Home from "../../pages/Home/Home"
 import Header from "../Header/Header"
 import SignIn from "../../pages/SignIn/SignIn"
@@ -11,7 +11,7 @@ const Router = () => {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/dashboard/:userId" element={<Dashboard />} />
+        <Route path="/user" element={<User />} />
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
       </Routes>
