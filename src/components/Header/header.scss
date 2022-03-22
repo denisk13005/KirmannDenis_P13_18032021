@@ -21,4 +21,27 @@ header {
       text-decoration: underline;
     }
   }
+  .signOut {
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+    font-weight: bold;
+    p {
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+    i {
+      margin-left: 15px;
+      margin-right: 5px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .logOut {
+      display: flex;
+      align-items: center;
+    }
+  }
 }
