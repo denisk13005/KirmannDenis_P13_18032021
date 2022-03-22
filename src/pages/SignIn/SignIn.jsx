@@ -44,7 +44,7 @@ const SignIn = () => {
             />
           </div>
           <div className="checkbox">
-            <input type="checkbox" />
+            <input type="checkbox" id="checkbox" />
             <label htmlFor="checkbox">Remember me</label>
           </div>
           <input className="signInBtn" type="submit" value="Sign In" />
