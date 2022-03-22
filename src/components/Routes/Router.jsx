@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Dashboard from "../../pages/Dashboard/Dashboard"
 import Home from "../../pages/Home/Home"
 import Header from "../Header/Header"
-import SignIn from "../SignIn/SignIn"
+import SignIn from "../../pages/SignIn/SignIn"
 import Footer from "../Footer/Footer"
 
 const Router = () => {

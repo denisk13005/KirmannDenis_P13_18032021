@@ -1,7 +1,7 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
 import argentBankLogo from "../../assets/argentBankLogo.png"
-import SignIn from "../SignIn/SignIn"
+import SignIn from "../../pages/SignIn/SignIn"
 
 import "./header.scss"
 

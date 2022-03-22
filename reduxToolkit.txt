@@ -1,0 +1,18 @@
+redux toolkit
+
+npx create-react-app my-app --template redux
+
+installer redux et react-redux et @reduxjs/toolkit
+
+créer le store avec configureStore qui comprendra un objet reducer qui comprendra lui mm un objet
+
+mettre en place le PROVIDER dans index
+
+le reducer sert a modifier un état (initial ou maj) en fonction d'une action qu'on va définir ex : on a un état qui contient 2 tâches , on veut ajouter une tâche à notre état, on va passer l'action "ajouter une tâche à notre reducer qui retournera un nouvel état avec une tâche en plus 
+
+chaque action a un nom mais aussi des données a ajouter au state (le payload) par exemple : action{ type :"ajouter", information : "ménage"}
+
+
+pour résoudre les erreurs cors ajouter dans le package front : "proxy":"http://127.0.0.1:5000" (vidéo connecting back to front a 6.39mn)
+concurrently a ajouter en package pour créer une seule commande pour ancer le front et le back(12 mn)
+
