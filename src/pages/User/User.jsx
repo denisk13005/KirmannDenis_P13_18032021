@@ -7,7 +7,7 @@ import "./user.scss"
 const User = () => {
   const [firstName, setFirstName] = useState("Tony")
   const [lastName, setLastName] = useState(" Jarvis")
-  const [editName, setEditName] = useState(true)
+  const [editName, setEditName] = useState(false)
   const [newName, setNewName] = useState()
   //useSelector(firstname, lastname)
   const editUserName = () => {
