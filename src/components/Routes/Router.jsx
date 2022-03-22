@@ -5,6 +5,7 @@ import Home from "../../pages/Home/Home"
 import Header from "../Header/Header"
 import SignIn from "../../pages/SignIn/SignIn"
 import Footer from "../Footer/Footer"
+import PageNotFound from "../../pages/PageNotFound/PageNotFound"
 
 const Router = () => {
   return (
@@ -14,6 +15,7 @@ const Router = () => {
         <Route path="/user" element={<User />} />
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
     </BrowserRouter>

@@ -1,14 +1,18 @@
 import React from "react"
 import { useState } from "react"
 import Account from "../../components/Account/Account"
+import EditUserName from "../../components/EditUserName/EditUserName"
 import "./user.scss"
 
 const User = () => {
-  const [userName, setUserName] = useState("Tony Jarvis")
+  const [firstName, setFirstName] = useState("Tony")
+  const [lastName, setLastName] = useState(" Jarvis")
   const [editName, setEditName] = useState(false)
   const [newName, setNewName] = useState()
+  //useSelector(firstname, lastname)
   const editUserName = () => {
     setEditName(true)
+    document.querySelector(".edit-button").style.display = "none"
   }
   console.log(editName)
   return (
@@ -17,7 +21,7 @@ const User = () => {
         <h1>
           Welcome back
           <br />
-          {!editName ? `${userName}` : `${(<Account />)}`}
+          {!editName ? firstName + lastName : <EditUserName />}
         </h1>
         <button className="edit-button" onClick={editUserName}>
           Edit Name
