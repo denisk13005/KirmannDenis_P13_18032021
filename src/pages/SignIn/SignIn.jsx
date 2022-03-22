@@ -1,9 +1,9 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import "./signIn.scss"
 
 const SignIn = () => {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
+  const [username, setUsername] = useState(" ")
+  const [password, setPassword] = useState(" ")
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -12,7 +12,13 @@ const SignIn = () => {
 
     window.location = "/user"
     // }
+    setPassword("")
+    setUsername(" ")
   }
+  useEffect(() => {
+    setPassword("")
+    setUsername(" ")
+  }, [])
   return (
     <div className="main">
       <div className="signInContainer">

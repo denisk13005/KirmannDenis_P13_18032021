@@ -8,7 +8,9 @@ import "./header.scss"
 const Header = () => {
   return (
     <header>
-      <img src={argentBankLogo} alt="bank logo" />
+      <NavLink to="/">
+        <img src={argentBankLogo} alt="bank logo" />
+      </NavLink>
       <NavLink className="signIn" to="/signin">
         <i className="fa fa-user-circle"></i>
         Sign In

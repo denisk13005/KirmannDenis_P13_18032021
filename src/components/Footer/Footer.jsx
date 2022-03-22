@@ -3,7 +3,7 @@ import "./footer.scss"
 
 const Footer = () => {
   return (
-    <footer>
+    <footer id="footer">
       <p>Copyright 2020 Argent Bank</p>
     </footer>
   )
