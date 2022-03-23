@@ -1,16 +1,12 @@
 import React from "react"
 import { useState } from "react"
+import { NavLink } from "react-router-dom"
 import "./account.scss"
 
 const Account = () => {
   const [userAccount, setuserAccount] = useState("MAX")
   const [balance, setbalance] = useState("balance or current")
   //useSelector(userDatas)
-
-  const viewTransaction = () => {
-    console.log("click")
-    window.location = "/transaction/:transactionId"
-  }
 
   return (
     <div className="accountContainer">
@@ -20,9 +16,9 @@ const Account = () => {
         <p className="account-amount-description">{balance}</p>
       </div>
       <div className="account-content-wrapper cta">
-        <button className="transaction-button" onClick={viewTransaction}>
-          View transactions
-        </button>
+        <NavLink to="/user/:transactionId">
+          <button className="transaction-button">View transactions</button>
+        </NavLink>
       </div>
     </div>
   )
