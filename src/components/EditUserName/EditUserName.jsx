@@ -3,20 +3,20 @@ import { useState } from "react"
 import "./editUserName.scss"
 
 const EditUserName = () => {
-  const [firstName, setFirstName] = useState()
-  const [lastName, setLastName] = useState()
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
 
-  const save = () => {
+  const save = (e) => {
+    e.preventDefault()
     console.log("save")
-    // dispatch(put)
 
-    window.location = "/user"
+    // dispatch(put)
   }
 
   const cancel = () => {
     console.log("cancel")
-
-    window.location = "/user"
+    setFirstName("")
+    setLastName("")
   }
   return (
     <div className="editUserNameContainer">

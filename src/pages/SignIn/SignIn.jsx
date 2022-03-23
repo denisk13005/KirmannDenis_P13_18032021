@@ -1,30 +1,29 @@
 import React, { useEffect, useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { selectStatus } from "../../utils/selector"
+import { toggleStatus } from "../../features/status"
 import "./signIn.scss"
 
 const SignIn = () => {
   const [username, setUsername] = useState(" ")
-  const [password, setPassword] = useState(" ")
+  const [password, setPassword] = useState("")
 
-  const handleSubmit = (e) => {
+  const status = useSelector((state) => state.status)
+  const dispatch = useDispatch()
+  console.log(status.status)
+
+  const handleStatus = (e) => {
     e.preventDefault()
-    //dispatch('loggin')
-    //if(token){
-
-    window.location = "/user"
-    // }
-    setPassword("")
-    setUsername(" ")
+    dispatch(toggleStatus())
+    console.log("handleStatus")
   }
-  useEffect(() => {
-    setPassword("")
-    setUsername(" ")
-  }, [])
+
   return (
     <div className="main">
       <div className="signInContainer">
         <i className="fa fa-user-circle sign-in-icon"></i>
         <h1>Sign In</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleStatus}>
           <div className="input">
             <label htmlFor="usename">Username</label>
             <input
