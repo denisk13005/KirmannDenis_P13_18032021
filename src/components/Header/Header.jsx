@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+import { useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
 import argentBankLogo from "../../assets/argentBankLogo.png"
 import SignIn from "../../pages/SignIn/SignIn"
@@ -6,9 +7,16 @@ import SignIn from "../../pages/SignIn/SignIn"
 import "./header.scss"
 
 const Header = () => {
+  //to SignIn
   const [logged, setLogged] = useState(false)
+  //user LastName
   const [userName, setUserName] = useState("Tony")
-  //useSelector(logged,userName)
+  //take the state
+  let connected = useSelector((state) => state.status)
+  //when the state status changed change logged to true
+  useEffect(() => {
+    connected.status === "connected" && setLogged(true)
+  }, [connected])
 
   const logOut = () => {
     //vider le local storage peut être

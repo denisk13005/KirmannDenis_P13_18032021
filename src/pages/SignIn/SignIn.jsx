@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { selectStatus } from "../../utils/selector"
 import { toggleStatus } from "../../features/status"
 import "./signIn.scss"
+import { NavLink } from "react-router-dom"
 
 const SignIn = () => {
   const [username, setUsername] = useState(" ")
@@ -12,18 +13,12 @@ const SignIn = () => {
   const dispatch = useDispatch()
   console.log(status.status)
 
-  const handleStatus = (e) => {
-    e.preventDefault()
-    dispatch(toggleStatus())
-    console.log("handleStatus")
-  }
-
   return (
     <div className="main">
       <div className="signInContainer">
         <i className="fa fa-user-circle sign-in-icon"></i>
         <h1>Sign In</h1>
-        <form onSubmit={handleStatus}>
+        <form>
           <div className="input">
             <label htmlFor="usename">Username</label>
             <input
@@ -46,7 +41,9 @@ const SignIn = () => {
             <input type="checkbox" id="checkbox" />
             <label htmlFor="checkbox">Remember me</label>
           </div>
-          <input className="signInBtn" type="submit" value="Sign In" />
+          <NavLink to="/user" onClick={() => dispatch(toggleStatus())}>
+            <input className="signInBtn" type="submit" value="Sign In" />
+          </NavLink>
         </form>
       </div>
     </div>
