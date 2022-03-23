@@ -9,9 +9,7 @@ const statusSlice = createSlice({
   },
   reducers: {
     toggleStatus: (state) => {
-      state.status === "disconnected"
-        ? (state.status = "connected")
-        : (state.status = "disconnected")
+      state.status = "connected"
       return state
     },
   },
