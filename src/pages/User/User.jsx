@@ -10,6 +10,7 @@ const User = () => {
   const [editName, setEditName] = useState(false)
   const [newName, setNewName] = useState()
   //useSelector(firstname, lastname)
+
   const editUserName = () => {
     setEditName(true)
     document.querySelector(".edit-button").style.display = "none"
