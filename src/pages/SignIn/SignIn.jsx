@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { selectStatus } from "../../utils/selector"
-import { toggleStatus } from "../../features/status"
+import { connectedStatus } from "../../features/status"
 import "./signIn.scss"
 import { NavLink } from "react-router-dom"
 
@@ -41,7 +41,7 @@ const SignIn = () => {
             <input type="checkbox" id="checkbox" />
             <label htmlFor="checkbox">Remember me</label>
           </div>
-          <NavLink to="/user" onClick={() => dispatch(toggleStatus())}>
+          <NavLink to="/user" onClick={() => dispatch(connectedStatus())}>
             <input className="signInBtn" type="submit" value="Sign In" />
           </NavLink>
         </form>

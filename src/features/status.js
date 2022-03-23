@@ -8,13 +8,17 @@ const statusSlice = createSlice({
     status: "disconnected",
   },
   reducers: {
-    toggleStatus: (state) => {
+    connectedStatus: (state) => {
       state.status = "connected"
+      return state
+    },
+    disconnectedStatus: (state) => {
+      state.status = "disconnected"
       return state
     },
   },
 })
 // export const { toggleStatus } = statusSlice.actions
 const { actions, reducer } = statusSlice
-export const { toggleStatus } = actions
+export const { connectedStatus, disconnectedStatus } = actions
 export default reducer

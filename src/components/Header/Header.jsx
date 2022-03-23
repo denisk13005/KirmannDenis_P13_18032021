@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
 import argentBankLogo from "../../assets/argentBankLogo.png"
+import { disconnectedStatus } from "../../features/status"
 import SignIn from "../../pages/SignIn/SignIn"
 
 import "./header.scss"
@@ -13,15 +14,13 @@ const Header = () => {
   const [userName, setUserName] = useState("Tony")
   //take the state
   let connected = useSelector((state) => state.status)
+
+  const dispatch = useDispatch()
   //when the state status changed change logged to true
   useEffect(() => {
-    connected.status === "connected" && setLogged(true)
+    connected.status === "connected" ? setLogged(true) : setLogged(false)
   }, [connected])
 
-  const logOut = () => {
-    //vider le local storage peut être
-    window.location = "/"
-  }
   return (
     <header>
       <NavLink to="/">
@@ -36,10 +35,15 @@ const Header = () => {
         <div className="signOut">
           <i className="fa fa-user-circle"></i>
           <p>{userName}</p>
-          <div className="logOut" onClick={logOut}>
-            <i className="fa fa-sign-out"></i>
-            <p>Sign Out</p>
-          </div>
+          <NavLink to="/">
+            <div
+              className="logOut"
+              onClick={() => dispatch(disconnectedStatus())}
+            >
+              <i className="fa fa-sign-out"></i>
+              <p>Sign Out</p>
+            </div>
+          </NavLink>
         </div>
       )}
     </header>
