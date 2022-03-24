@@ -2,23 +2,23 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const statusSlice = createSlice({
   //nom du slice
-  name: "status",
+  name: "user",
   //state initial
-  initialState: {
-    status: "disconnected",
-  },
+  initialState: {},
   reducers: {
-    connectedStatus: (state) => {
+    login: (state) => {
       state.status = "connected"
+      state.name = "tony"
       return state
     },
-    disconnectedStatus: (state) => {
-      state.status = "disconnected"
+    logout: (state) => {
+      state.status = ""
+      state.name = ""
       return state
     },
   },
 })
 // export const { toggleStatus } = statusSlice.actions
 const { actions, reducer } = statusSlice
-export const { connectedStatus, disconnectedStatus } = actions
+export const { login, logout } = actions
 export default reducer
