@@ -6,7 +6,7 @@ const statusSlice = createSlice({
   name: "user",
   //state initial
   initialState: {
-    // status: "400",
+    status: "400",
   },
   reducers: {
     auth: (state, action) => {
@@ -18,7 +18,6 @@ const statusSlice = createSlice({
     },
   },
 })
-// export const { toggleStatus } = statusSlice.actions
-const { actions, reducer } = statusSlice
-export const { login, logout, auth } = actions
-export default reducer
+
+export const { login, logout, auth } = statusSlice.actions
+export default statusSlice.reducer
