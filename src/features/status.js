@@ -12,8 +12,7 @@ const statusSlice = createSlice({
       return state
     },
     logout: (state) => {
-      state.status = ""
-      state.name = ""
+      state = {}
       return state
     },
   },
