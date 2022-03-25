@@ -8,19 +8,24 @@ import SignIn from "../../pages/SignIn/SignIn"
 import "./header.scss"
 
 const Header = () => {
+  let user = useSelector((state) => state.user.user)
   //to SignIn
   const [logged, setLogged] = useState(false)
   //user LastName
-  const [userName, setUserName] = useState("Tony")
+  const [userName, setUserName] = useState("")
   //take the state
-  let user = useSelector((state) => state.user.user)
 
   const dispatch = useDispatch()
   //when the state status changed change logged to true
   useEffect(() => {
-    user ? setLogged(true) : setLogged(false)
+    if (user) {
+      setLogged(true)
+      setUserName(user.firstName)
+    } else {
+      setLogged(false)
+    }
   }, [user])
-
+  console.log(user)
   return (
     <header>
       <NavLink to="/">

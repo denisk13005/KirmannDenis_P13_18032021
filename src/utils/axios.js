@@ -4,18 +4,19 @@ import { useDispatch } from "react-redux"
 
 const baseURL = "http://localhost:3001/api/v1"
 export const getUserDatas = async (email, password) => {
-  let tok = await axios.post(`${baseURL}/user/login`, {
-    email,
-    password,
-  })
-  console.log(tok)
+  let tok = await axios
+    .post(`${baseURL}/user/login`, {
+      email,
+      password,
+    })
+    .catch((err) => console.log(err))
   let res = await axios({
     method: "post",
     url: `${baseURL}/user/profile`,
     headers: {
       authorization: `Bearer ${tok.data.body.token}`,
     },
-  })
+  }).catch((err) => console.log(err))
   return res.data.body
 }
 
