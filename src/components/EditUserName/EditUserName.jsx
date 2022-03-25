@@ -27,14 +27,14 @@ const EditUserName = () => {
           placeholder="Tony"
           color="red"
           value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
+          onChange={(e) => setLastName(e.target.value.trim())}
         />
         <input
           type="text"
           id="firstName"
           placeholder="Jarvis"
           value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
+          onChange={(e) => setFirstName(e.target.value.trim())}
         />
       </div>
       <div className="btnsContainer">
