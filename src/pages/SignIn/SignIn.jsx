@@ -1,43 +1,43 @@
 import React, { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { selectStatus } from "../../utils/selector"
-import { login } from "../../features/status"
+import { auth } from "../../features/status"
 import "./signIn.scss"
 import { NavLink } from "react-router-dom"
 import User from "../User/User"
-import { getToken, getUser } from "../../utils/axios"
+import { fetchToken, getUserDatas } from "../../utils/axios"
+import axios from "axios"
 
 const SignIn = () => {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const [path, setPath] = useState("")
+  const [username, setUsername] = useState("tony@stark.com")
+  const [password, setPassword] = useState("password123")
+  const [token, setToken] = useState("")
+  const [userDatas, setUserDatas] = useState("")
+  const [path, setPath] = useState()
 
-  const user = useSelector((state) => state.user)
+  const isAuth = useSelector((state) => state.user.user)
+  console.log(isAuth)
+
   const dispatch = useDispatch()
-  console.log(username)
-  console.log(password)
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log("click")
-    dispatch(login())
-    console.log(username, "//", password)
-    let token = await getToken(username, password)
-    console.log(token)
-    let user = getUser(token)
-
-    console.log(user)
+    setUserDatas(await getUserDatas(username, password))
   }
-
+  if (userDatas) {
+    dispatch(auth(userDatas))
+  }
+  console.log(userDatas)
   return (
     <>
-      {user.status === "connected" ? (
+      {isAuth ? (
         <User />
       ) : (
         <div className="main">
           <div className="signInContainer">
             <i className="fa fa-user-circle sign-in-icon"></i>
             <h1>Sign In</h1>
-            <form onSubmit={(e) => handleSubmit(e)}>
+            <form onSubmit={handleSubmit}>
               <div className="input">
                 <label htmlFor="usename">Username</label>
                 <input

@@ -13,12 +13,12 @@ const Header = () => {
   //user LastName
   const [userName, setUserName] = useState("Tony")
   //take the state
-  let user = useSelector((state) => state.user)
+  let user = useSelector((state) => state.user.user)
 
   const dispatch = useDispatch()
   //when the state status changed change logged to true
   useEffect(() => {
-    user.status === "connected" ? setLogged(true) : setLogged(false)
+    user ? setLogged(true) : setLogged(false)
   }, [user])
 
   return (

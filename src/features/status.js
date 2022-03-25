@@ -1,15 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit"
+import axios from "axios"
 
 const statusSlice = createSlice({
   //nom du slice
   name: "user",
   //state initial
-  initialState: {},
+  initialState: {
+    // status: "400",
+  },
   reducers: {
-    login: (state) => {
-      state.status = "connected"
-      state.name = "tony"
-      return state
+    auth: (state, action) => {
+      state.user = action.payload
     },
     logout: (state) => {
       state = {}
@@ -19,5 +20,5 @@ const statusSlice = createSlice({
 })
 // export const { toggleStatus } = statusSlice.actions
 const { actions, reducer } = statusSlice
-export const { login, logout } = actions
+export const { login, logout, auth } = actions
 export default reducer
