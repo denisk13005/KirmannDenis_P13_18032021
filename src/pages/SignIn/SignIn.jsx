@@ -1,33 +1,27 @@
 import React, { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { selectStatus } from "../../utils/selector"
-import { auth } from "../../features/status"
+import { useNavigate } from "react-router-dom"
+import { getToken } from "../../features/auth"
 import "./signIn.scss"
-import { NavLink } from "react-router-dom"
 import User from "../User/User"
-import { fetchToken, getUserDatas } from "../../utils/axios"
-import axios from "axios"
+import { getUserDatas } from "../../utils/axios"
 
 const SignIn = () => {
   const [username, setUsername] = useState("tony@stark.com")
   const [password, setPassword] = useState("password123")
-  const [token, setToken] = useState("")
-  const [userDatas, setUserDatas] = useState("")
-  const [path, setPath] = useState()
 
-  const isAuth = useSelector((state) => state.user.user)
+  const isAuth = useSelector((state) => state.auth.isLoaded)
   console.log(isAuth)
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setUserDatas(await getUserDatas(username, password))
+    dispatch(getToken({ isLoaded: true, userName: "bebe" }))
+    navigate("/user")
   }
-  if (userDatas) {
-    dispatch(auth(userDatas))
-  }
-  console.log(userDatas)
+
   return (
     <>
       {isAuth ? (
