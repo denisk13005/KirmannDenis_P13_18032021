@@ -28,9 +28,9 @@ const User = () => {
           Edit Name
         </button>
       </div>
-      <Account />
-      <Account />
-      <Account />
+      <Account id={1} />
+      <Account id={2} />
+      <Account id={3} />
     </div>
   )
 }

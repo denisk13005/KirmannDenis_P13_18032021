@@ -3,7 +3,8 @@ import { useState } from "react"
 import { NavLink } from "react-router-dom"
 import "./account.scss"
 
-const Account = () => {
+const Account = (props) => {
+  console.log(props.id)
   const [userAccount, setuserAccount] = useState("MAX")
   const [balance, setbalance] = useState("balance or current")
   //useSelector(userDatas)
@@ -16,7 +17,7 @@ const Account = () => {
         <p className="account-amount-description">{balance}</p>
       </div>
       <div className="account-content-wrapper cta">
-        <NavLink to="/user/:transactionId">
+        <NavLink to={`/user/${props.key}`}>
           <button className="transaction-button">View transactions</button>
         </NavLink>
       </div>

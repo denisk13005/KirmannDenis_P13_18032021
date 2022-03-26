@@ -6,6 +6,7 @@ import Header from "../Header/Header"
 import SignIn from "../../pages/SignIn/SignIn"
 import Footer from "../Footer/Footer"
 import PageNotFound from "../../pages/PageNotFound/PageNotFound"
+import Transactions from "../Transactions/Transactions"
 
 const Router = () => {
   return (
@@ -15,6 +16,7 @@ const Router = () => {
         <Route path="/user" element={<User />} />
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/user/:transactionId" element={<Transactions />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
