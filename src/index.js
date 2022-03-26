@@ -1,13 +1,15 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import App from "./App"
-import Dashboard from "./pages/Dashboard/Dashboard"
-import PageNotFound from "./pages/PageNotFound/PageNotFound"
+import { Provider } from "react-redux"
+import { store } from "./utils/store"
+import "./index.scss"
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-    <PageNotFound />
-    <Dashboard />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>,
   document.getElementById("root")
 )
