@@ -28,9 +28,9 @@ const User = () => {
           Edit Name
         </button>
       </div>
-      <Account id={1} />
-      <Account id={2} />
-      <Account id={3} />
+      <Account amount={"$2,082.79"} />
+      <Account amount={"$10,928.42"} />
+      <Account amount={"$184.30"} />
     </div>
   )
 }
