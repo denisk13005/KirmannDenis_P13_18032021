@@ -18,7 +18,10 @@ export const fetchUserDatas = createAsyncThunk(
 )
 const userSlice = createSlice({
   name: "user",
-  initialState: {},
+  initialState: {
+    firstName: "",
+    lastName: "",
+  },
   reducers: {
     getUserDatas: (state, action) => {
       state = action.payload
@@ -31,7 +34,13 @@ const userSlice = createSlice({
     },
     [fetchUserDatas.fulfilled]: (state, { payload }) => {
       console.log("Fetch Successfully !")
-      return { ...state, state: payload }
+      return {
+        firstName: payload.firstName,
+        lastName: payload.lastName,
+        id: payload.id,
+        createdAt: payload.createdAt,
+        updatedAt: payload.updatedAt,
+      }
     },
     [fetchUserDatas.rejected]: () => {
       console.log("Rejected !")

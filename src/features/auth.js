@@ -34,7 +34,7 @@ const authSlice = createSlice({
     },
     [fetchToken.fulfilled]: (state, { payload }) => {
       console.log("Fetch Successfully !")
-      return { ...state, token: payload }
+      return { ...state, token: payload, isLoaded: true }
     },
     [fetchToken.rejected]: () => {
       console.log("Rejected !")
