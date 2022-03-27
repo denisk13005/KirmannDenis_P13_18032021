@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
 import argentBankLogo from "../../assets/argentBankLogo.png"
-import { logout } from "../../features/status"
+import { logout } from "../../features/auth"
 import SignIn from "../../pages/SignIn/SignIn"
 
 import "./header.scss"
 
 const Header = () => {
-  let user = useSelector((state) => state.user.user)
+  let user = useSelector((state) => state.userName)
+
   //to SignIn
   const [logged, setLogged] = useState(false)
   //user LastName
