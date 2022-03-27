@@ -9,7 +9,6 @@ export const fetchToken = createAsyncThunk(
       email: value.username,
       password: value.password,
     })
-    console.log(response.data.body.token)
     return response.data.body.token
   }
 )
@@ -19,16 +18,10 @@ const authSlice = createSlice({
   name: "auth",
   //state initial
   initialState: {
-    username: "tony@stark.com",
-    password: "password123",
     token: "",
     isLoaded: false,
   },
   reducers: {
-    getToken: (state, action) => {
-      state.token = action.payload
-      return state
-    },
     logout: (state) => {
       state = {}
       return state
@@ -40,7 +33,7 @@ const authSlice = createSlice({
     },
     [fetchToken.fulfilled]: (state, { payload }) => {
       console.log("Fetch Successfully !")
-      return { ...state, auth: payload }
+      return { ...state, token: payload }
     },
     [fetchToken.rejected]: () => {
       console.log("Rejected !")

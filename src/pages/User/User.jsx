@@ -1,20 +1,26 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import Account from "../../components/Account/Account"
 import EditUserName from "../../components/EditUserName/EditUserName"
+import { fetchUserDatas, getUserDatas } from "../../features/user"
 import "./user.scss"
 
 const User = () => {
   const [firstName, setFirstName] = useState("Tony")
   const [lastName, setLastName] = useState(" Jarvis")
   const [editName, setEditName] = useState(false)
-  const [newName, setNewName] = useState()
-  //useSelector(firstname, lastname)
-
+  const token = useSelector((state) => state.auth.token)
+  const dispatch = useDispatch()
   const editUserName = (e) => {
     setEditName(true)
     document.querySelector(".edit-button").style.display = "none"
   }
+  if (token) {
+    console.log(token)
+    dispatch(fetchUserDatas(token))
+  }
+
   console.log(editName)
   return (
     <div className="userContainer">

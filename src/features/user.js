@@ -9,9 +9,10 @@ export const fetchUserDatas = createAsyncThunk(
       method: "post",
       url: `${baseURL}/user/profile`,
       headers: {
-        authorization: `Bearer ${token.data.body.token}`,
+        authorization: `Bearer ${token}`,
       },
     }).catch((err) => console.log(err))
+    console.log(res.data.body)
     return res.data.body
   }
 )
@@ -22,6 +23,18 @@ const userSlice = createSlice({
     getUserDatas: (state, action) => {
       state = action.payload
       return state
+    },
+  },
+  extraReducers: {
+    [fetchUserDatas.pending]: () => {
+      console.log("Pending")
+    },
+    [fetchUserDatas.fulfilled]: (state, { payload }) => {
+      console.log("Fetch Successfully !")
+      return { ...state, state: payload }
+    },
+    [fetchUserDatas.rejected]: () => {
+      console.log("Rejected !")
     },
   },
 })

@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { fetchToken } from "../../features/auth"
 import "./signIn.scss"
-import User from "../User/User"
-import { getUserDatas } from "../../utils/axios"
 
 const SignIn = () => {
-  const [username, setUsername] = useState()
-  const [password, setPassword] = useState()
-  const [value, setValue] = useState({})
+  const [username, setUsername] = useState("tony@stark.com")
+  const [password, setPassword] = useState("password123")
+
   const isAuth = useSelector((state) => state.auth.isLoaded)
   console.log(isAuth)
 
@@ -34,6 +32,7 @@ const SignIn = () => {
             <input
               type="text"
               id="username"
+              value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
@@ -42,6 +41,7 @@ const SignIn = () => {
             <input
               type="password"
               id="password"
+              value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
