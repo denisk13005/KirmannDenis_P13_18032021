@@ -1,25 +1,26 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import Account from "../../components/Account/Account"
 import EditUserName from "../../components/EditUserName/EditUserName"
-import { fetchUserDatas, getUserDatas } from "../../features/user"
+import { fetchUserDatas } from "../../features/user"
 import "./user.scss"
 
 const User = () => {
-  const [firstName, setFirstName] = useState("Tony")
-  const [lastName, setLastName] = useState(" Jarvis")
+  let firstName = useSelector((state) => state.user.firstName)
+  let lastName = useSelector((state) => state.user.lastName)
+
   const [editName, setEditName] = useState(false)
+
   const token = useSelector((state) => state.auth.token)
+
   const dispatch = useDispatch()
+
   const editUserName = (e) => {
     setEditName(true)
     document.querySelector(".edit-button").style.display = "none"
   }
-  if (token) {
-    console.log(token)
-    dispatch(fetchUserDatas(token))
-  }
+  token && dispatch(fetchUserDatas(token))
 
   console.log(editName)
   return (
@@ -28,7 +29,7 @@ const User = () => {
         <h1>
           Welcome back
           <br />
-          {!editName ? firstName + lastName : <EditUserName />}
+          {!editName ? `${firstName} ${lastName}` : <EditUserName />}
         </h1>
         <button className="edit-button" onClick={editUserName}>
           Edit Name
