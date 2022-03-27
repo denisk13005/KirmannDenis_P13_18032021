@@ -9,6 +9,7 @@ export const fetchToken = createAsyncThunk(
       email: value.username,
       password: value.password,
     })
+    localStorage.setItem("token", response.data.body.token)
     return response.data.body.token
   }
 )
