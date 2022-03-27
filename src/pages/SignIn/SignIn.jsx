@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { getToken } from "../../features/auth"
+import { fetchToken } from "../../features/auth"
 import "./signIn.scss"
 import User from "../User/User"
 import { getUserDatas } from "../../utils/axios"
 
 const SignIn = () => {
-  const [username, setUsername] = useState("tony@stark.com")
-  const [password, setPassword] = useState("password123")
-
+  const [username, setUsername] = useState()
+  const [password, setPassword] = useState()
+  const [value, setValue] = useState({})
   const isAuth = useSelector((state) => state.auth.isLoaded)
   console.log(isAuth)
 
@@ -18,7 +18,8 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    dispatch(getToken({ isLoaded: true, userName: "bebe" }))
+    let value = { username, password }
+    dispatch(fetchToken({ value }))
     navigate("/user")
   }
 

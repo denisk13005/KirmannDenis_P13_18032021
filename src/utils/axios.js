@@ -2,7 +2,7 @@ import axios from "axios"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 
-const baseURL = "http://localhost:3001/api/v1"
+export const baseURL = "http://localhost:3001/api/v1"
 export const getUserDatas = async (email, password) => {
   let tok = await axios
     .post(`${baseURL}/user/login`, {

@@ -16,3 +16,29 @@ chaque action a un nom mais aussi des données a ajouter au state (le payload) p
 pour résoudre les erreurs cors ajouter dans le package front : "proxy":"http://127.0.0.1:5000" (vidéo connecting back to front a 6.39mn)
 concurrently a ajouter en package pour créer une seule commande pour ancer le front et le back(12 mn)
 
+
+    useEffect(() => {
+        let isMounted = true;
+        const controller = new AbortController(); ==> empêcher la requête si le composant est démonté 
+
+        const getUsers = async () => {
+            try {
+                const response = await axiosPrivate.get('/users', {
+                    signal: controller.signal
+                });
+                console.log(response.data);
+                isMounted && setUsers(response.data);
+            } catch (err) {
+                console.error(err);
+                navigate('/login', { state: { from: location }, replace: true });
+            }
+        }
+
+        getUsers();
+
+        return () => {    ==> FONCTION DE NETTOYAGE quand le comosant est démonté
+            isMounted = false;
+            controller.abort();
+        }
+    }, [])
+
