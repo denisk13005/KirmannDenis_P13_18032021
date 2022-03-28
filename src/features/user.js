@@ -38,10 +38,11 @@ const userSlice = createSlice({
   initialState: {
     firstName: "",
     lastName: "",
+    editName: false,
   },
   reducers: {
-    getUserDatas: (state, action) => {
-      state = action.payload
+    editName: (state) => {
+      state.editName = true
       return state
     },
   },
@@ -57,6 +58,7 @@ const userSlice = createSlice({
         id: payload.id,
         createdAt: payload.createdAt,
         updatedAt: payload.updatedAt,
+        editName: false,
       }
     },
     [fetchUserDatas.rejected]: () => {
@@ -65,5 +67,5 @@ const userSlice = createSlice({
   },
 })
 
-export const { getUserDatas } = userSlice.actions
+export const { editName } = userSlice.actions
 export default userSlice.reducer

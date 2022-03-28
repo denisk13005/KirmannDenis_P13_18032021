@@ -11,19 +11,13 @@ const User = () => {
   let firstName = useSelector((state) => state.user.firstName)
   let lastName = useSelector((state) => state.user.lastName)
 
-  const [editName, setEditName] = useState(false)
+  const editName = useSelector((state) => state.user.editName)
 
   const token = useSelector((state) => state.auth.token)
 
   const dispatch = useDispatch()
 
-  // const editUserName = (e) => {
-  //   setEditName(true)
-  //   document.querySelector(".edit-button").style.display = "none"
-  //   document.querySelector(".editUserNameContainer").style.display =
-  //     "inline-block"
-  // }
-  token && dispatch(fetchUserDatas(token))
+  editName === false && dispatch(fetchUserDatas(token))
 
   console.log(editName)
   return (
@@ -31,7 +25,6 @@ const User = () => {
       <div className="userContainer__header">
         <h1>
           Welcome back
-          <br />
           {!editName ? <Name /> : <EditUserName />}
         </h1>
       </div>
