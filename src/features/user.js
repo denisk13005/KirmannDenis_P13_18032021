@@ -16,6 +16,24 @@ export const fetchUserDatas = createAsyncThunk(
     return res.data.body
   }
 )
+export const updateUserDatas = createAsyncThunk(
+  "user/updateUserDatas",
+  async ({ datas }) => {
+    console.log(datas)
+    let res = await axios({
+      method: "put",
+      url: `${baseURL}/user/profile`,
+      headers: {
+        authorization: `Bearer ${datas.token}`,
+      },
+      data: {
+        firstName: datas.firstName,
+        lastName: datas.lastName,
+      },
+    }).catch((err) => console.log(err))
+    console.log(res)
+  }
+)
 const userSlice = createSlice({
   name: "user",
   initialState: {

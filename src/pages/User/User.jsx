@@ -19,6 +19,8 @@ const User = () => {
   const editUserName = (e) => {
     setEditName(true)
     document.querySelector(".edit-button").style.display = "none"
+    document.querySelector(".editUserNameContainer").style.display =
+      "inline-block"
   }
   token && dispatch(fetchUserDatas(token))
 

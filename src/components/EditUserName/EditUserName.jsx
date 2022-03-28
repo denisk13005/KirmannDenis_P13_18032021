@@ -1,18 +1,30 @@
 import React from "react"
+import { useNavigate } from "react-router-dom"
 import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchUserDatas, updateUserDatas } from "../../features/user"
 import "./editUserName.scss"
 
 const EditUserName = () => {
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
 
+  const dispatch = useDispatch()
+  const token = useSelector((state) => state.auth.token)
+
+  const navigate = useNavigate()
   const save = (e) => {
     e.preventDefault()
     console.log("save")
-
-    // dispatch(put)
+    let datas = { firstName, lastName, token }
+    console.log(datas)
+    token && dispatch(updateUserDatas({ datas }))
+    dispatch(fetchUserDatas(token))
+    document.querySelector(".editUserNameContainer").style.display = "none"
+    navigate("/user")
+    document.querySelector(".edit-button").style.display = "inline-block"
+    //seteditname
   }
-
   const cancel = () => {
     console.log("cancel")
     setFirstName("")
@@ -26,15 +38,15 @@ const EditUserName = () => {
           id="lastName"
           placeholder="Tony"
           color="red"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value.trim())}
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value.trim())}
         />
         <input
           type="text"
           id="firstName"
           placeholder="Jarvis"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value.trim())}
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value.trim())}
         />
       </div>
       <div className="btnsContainer">
