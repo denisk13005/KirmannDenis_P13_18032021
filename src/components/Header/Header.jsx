@@ -3,30 +3,20 @@ import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
 import argentBankLogo from "../../assets/argentBankLogo.png"
 import { logout } from "../../features/auth"
-import SignIn from "../../pages/SignIn/SignIn"
 
 import "./header.scss"
 
 const Header = () => {
-  let user = useSelector((state) => state.userName)
+  let firstname = useSelector((state) => state.user.firstName)
+  let logged = useSelector((state) => state.auth.isLoaded)
 
   //to SignIn
-  const [logged, setLogged] = useState(false)
   //user LastName
-  const [userName, setUserName] = useState("")
   //take the state
 
   const dispatch = useDispatch()
   //when the state status changed change logged to true
-  useEffect(() => {
-    if (user) {
-      setLogged(true)
-      setUserName(user.firstName)
-    } else {
-      setLogged(false)
-    }
-  }, [user])
-  console.log(user)
+
   return (
     <header>
       <NavLink to="/">
@@ -40,7 +30,7 @@ const Header = () => {
       ) : (
         <div className="signOut">
           <i className="fa fa-user-circle"></i>
-          <p>{userName}</p>
+          <p>{firstname}</p>
           <NavLink to="/">
             <div className="logOut" onClick={() => dispatch(logout())}>
               <i className="fa fa-sign-out"></i>
