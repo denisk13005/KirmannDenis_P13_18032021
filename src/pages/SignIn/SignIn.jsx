@@ -7,20 +7,24 @@ import "./signIn.scss"
 const SignIn = () => {
   const [username, setUsername] = useState("tony@stark.com")
   const [password, setPassword] = useState("password123")
-
-  const isAuth = useSelector((state) => state.auth.isLoaded)
-  console.log(isAuth)
+  const [checked, setChecked] = useState(false)
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    let value = { username, password }
+    let value = { username, password, checked }
     dispatch(fetchToken({ value }))
+    const checkbox = document.querySelector("#checkbox")
+    console.log(checkbox.checked)
     navigate("/user")
   }
 
+  const handleCheckbox = (e) => {
+    setChecked(e.target.checked)
+  }
+  console.log(checked)
   return (
     <div className="main">
       <div className="signInContainer">
@@ -46,7 +50,7 @@ const SignIn = () => {
             />
           </div>
           <div className="checkbox">
-            <input type="checkbox" id="checkbox" />
+            <input onChange={handleCheckbox} type="checkbox" id="checkbox" />
             <label htmlFor="checkbox">Remember me</label>
           </div>
 
