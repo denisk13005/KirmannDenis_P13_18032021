@@ -3,6 +3,7 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import Account from "../../components/Account/Account"
 import EditUserName from "../../components/EditUserName/EditUserName"
+import Name from "../../components/Name/Name"
 import { fetchUserDatas } from "../../features/user"
 import "./user.scss"
 
@@ -16,12 +17,12 @@ const User = () => {
 
   const dispatch = useDispatch()
 
-  const editUserName = (e) => {
-    setEditName(true)
-    document.querySelector(".edit-button").style.display = "none"
-    document.querySelector(".editUserNameContainer").style.display =
-      "inline-block"
-  }
+  // const editUserName = (e) => {
+  //   setEditName(true)
+  //   document.querySelector(".edit-button").style.display = "none"
+  //   document.querySelector(".editUserNameContainer").style.display =
+  //     "inline-block"
+  // }
   token && dispatch(fetchUserDatas(token))
 
   console.log(editName)
@@ -31,11 +32,8 @@ const User = () => {
         <h1>
           Welcome back
           <br />
-          {!editName ? `${firstName} ${lastName}` : <EditUserName />}
+          {!editName ? <Name /> : <EditUserName />}
         </h1>
-        <button className="edit-button" onClick={editUserName}>
-          Edit Name
-        </button>
       </div>
       <Account amount={"$2,082.79"} />
       <Account amount={"$10,928.42"} />

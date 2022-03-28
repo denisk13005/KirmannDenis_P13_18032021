@@ -20,7 +20,7 @@ export const updateUserDatas = createAsyncThunk(
   "user/updateUserDatas",
   async ({ datas }) => {
     console.log(datas)
-    let res = await axios({
+    await axios({
       method: "put",
       url: `${baseURL}/user/profile`,
       headers: {
@@ -31,7 +31,6 @@ export const updateUserDatas = createAsyncThunk(
         lastName: datas.lastName,
       },
     }).catch((err) => console.log(err))
-    console.log(res)
   }
 )
 const userSlice = createSlice({
