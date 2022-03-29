@@ -5,12 +5,10 @@ import Account from "../../components/Account/Account"
 import EditUserName from "../../components/EditUserName/EditUserName"
 import Name from "../../components/Name/Name"
 import { fetchUserDatas } from "../../features/user"
+import PageNotFound from "../PageNotFound/PageNotFound"
 import "./user.scss"
 
 const User = () => {
-  let firstName = useSelector((state) => state.user.firstName)
-  let lastName = useSelector((state) => state.user.lastName)
-
   const editName = useSelector((state) => state.user.editName)
 
   const token = useSelector((state) => state.auth.token)
@@ -20,7 +18,9 @@ const User = () => {
   editName === false && dispatch(fetchUserDatas(token))
 
   console.log(editName)
-  return (
+  return token === "" ? (
+    <PageNotFound />
+  ) : (
     <div className="userContainer">
       <div className="userContainer__header">
         <h1>
