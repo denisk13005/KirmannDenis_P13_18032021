@@ -1,5 +1,4 @@
 import React from "react"
-import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import Account from "../../components/Account/Account"
 import EditUserName from "../../components/EditUserName/EditUserName"
