@@ -20,10 +20,6 @@ const EditUserName = () => {
     console.log(datas)
     token && dispatch(updateUserDatas({ datas }))
     dispatch(fetchUserDatas(token))
-    document.querySelector(".editUserNameContainer").style.display = "none"
-    navigate("/user")
-    document.querySelector(".edit-button").style.display = "inline-block"
-    //seteditname
   }
   const cancel = () => {
     console.log("cancel")
