@@ -2,7 +2,7 @@ import React from "react"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { fetchUserDatas, updateUserDatas } from "../../features/user"
+import { fetchUserDatas, updateUserDatas, abort } from "../../features/user"
 import "./editUserName.scss"
 
 const EditUserName = () => {
@@ -29,6 +29,7 @@ const EditUserName = () => {
     console.log("cancel")
     setFirstName("")
     setLastName("")
+    dispatch(abort())
   }
   return (
     <div className="editUserNameContainer">
