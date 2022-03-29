@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
 import argentBankLogo from "../../assets/argentBankLogo.png"
 import { logout } from "../../features/auth"
+import { resetUser } from "../../features/user"
 
 import "./header.scss"
 
@@ -16,7 +17,10 @@ const Header = () => {
 
   const dispatch = useDispatch()
   //when the state status changed change logged to true
-
+  const disconnect = () => {
+    dispatch(logout())
+    dispatch(resetUser())
+  }
   return (
     <header>
       <NavLink to="/">
@@ -32,7 +36,7 @@ const Header = () => {
           <i className="fa fa-user-circle"></i>
           <p>{firstname}</p>
           <NavLink to="/">
-            <div className="logOut" onClick={() => dispatch(logout())}>
+            <div className="logOut" onClick={disconnect}>
               <i className="fa fa-sign-out"></i>
               <p>Sign Out</p>
             </div>

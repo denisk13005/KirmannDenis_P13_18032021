@@ -9,6 +9,9 @@ const SignIn = () => {
   const [password, setPassword] = useState("password123")
   const [checked, setChecked] = useState(false)
 
+  const state = useSelector((state) => state)
+
+  console.log(state)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -18,7 +21,7 @@ const SignIn = () => {
     dispatch(fetchToken({ value }))
     const checkbox = document.querySelector("#checkbox")
     console.log(checkbox.checked)
-    navigate("/user")
+    navigate("/profile")
   }
 
   const handleCheckbox = (e) => {

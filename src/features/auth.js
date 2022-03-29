@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
-import { baseURL } from "../utils/axios"
+export const baseURL = "http://localhost:3001/api/v1"
 
 export const fetchToken = createAsyncThunk(
   "auth/fetchToken",
@@ -23,8 +23,8 @@ const authSlice = createSlice({
     isLoaded: false,
   },
   reducers: {
-    logout: (state) => {
-      state = {}
+    logout: (state, initialState) => {
+      state = { token: "", isLoaded: false }
       return state
     },
   },

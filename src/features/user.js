@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
-import { baseURL } from "../utils/axios"
+export const baseURL = "http://localhost:3001/api/v1"
 
 export const fetchUserDatas = createAsyncThunk(
   "user/fetchUserDatas",
@@ -16,15 +16,41 @@ export const fetchUserDatas = createAsyncThunk(
     return res.data.body
   }
 )
+export const updateUserDatas = createAsyncThunk(
+  "user/updateUserDatas",
+  async ({ datas }) => {
+    console.log(datas)
+    await axios({
+      method: "put",
+      url: `${baseURL}/user/profile`,
+      headers: {
+        authorization: `Bearer ${datas.token}`,
+      },
+      data: {
+        firstName: datas.firstName,
+        lastName: datas.lastName,
+      },
+    }).catch((err) => console.log(err))
+  }
+)
 const userSlice = createSlice({
   name: "user",
   initialState: {
     firstName: "",
     lastName: "",
+    editName: false,
   },
   reducers: {
-    getUserDatas: (state, action) => {
-      state = action.payload
+    editName: (state) => {
+      state.editName = true
+      return state
+    },
+    resetUser: (state, action) => {
+      state = { firstName: "", lastName: "", editName: false }
+      return state
+    },
+    abort: (state) => {
+      state.editName = false
       return state
     },
   },
@@ -40,6 +66,7 @@ const userSlice = createSlice({
         id: payload.id,
         createdAt: payload.createdAt,
         updatedAt: payload.updatedAt,
+        editName: false,
       }
     },
     [fetchUserDatas.rejected]: () => {
@@ -48,5 +75,5 @@ const userSlice = createSlice({
   },
 })
 
-export const { getUserDatas } = userSlice.actions
+export const { editName, resetUser, abort } = userSlice.actions
 export default userSlice.reducer
