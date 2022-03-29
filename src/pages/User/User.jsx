@@ -9,6 +9,10 @@ import PageNotFound from "../PageNotFound/PageNotFound"
 import Spinner from "../../components/Spinner/Spinner"
 import "./user.scss"
 
+/**
+ *userDashboard
+ * @returns {ReactElement}
+ */
 const User = () => {
   const editName = useSelector((state) => state.user.editName)
 

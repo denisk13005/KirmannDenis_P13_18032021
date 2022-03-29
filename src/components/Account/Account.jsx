@@ -1,6 +1,11 @@
 import React from "react"
 import "./account.scss"
 
+/**
+ * user Account
+ * @param {Object} amount
+ * @returns {ReactElement}
+ */
 const Account = ({ amount }) => {
   return (
     <div className="accountContainer">

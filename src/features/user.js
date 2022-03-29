@@ -2,6 +2,10 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
 export const baseURL = "http://localhost:3001/api/v1"
 
+/**
+ * Async Function  for fetching user datas
+ * @returns {Object} userDatas
+ */
 export const fetchUserDatas = createAsyncThunk(
   "user/fetchUserDatas",
   async (token) => {
@@ -16,6 +20,11 @@ export const fetchUserDatas = createAsyncThunk(
     return res.data.body
   }
 )
+
+/**
+ * async function for updating user name
+ *
+ */
 export const updateUserDatas = createAsyncThunk(
   "user/updateUserDatas",
   async ({ datas }) => {
@@ -33,6 +42,11 @@ export const updateUserDatas = createAsyncThunk(
     }).catch((err) => console.log(err))
   }
 )
+
+/**
+ * slice user of redux store
+ * @return {Object} redux store modified
+ */
 const userSlice = createSlice({
   name: "user",
   initialState: {
