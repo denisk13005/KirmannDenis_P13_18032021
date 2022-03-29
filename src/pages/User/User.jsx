@@ -15,7 +15,10 @@ const User = () => {
 
   const dispatch = useDispatch()
 
-  editName === false && dispatch(fetchUserDatas(token))
+  if (editName === false && token !== "") {
+    console.log("here")
+    dispatch(fetchUserDatas(token))
+  }
 
   console.log(editName)
   return token === "" ? (
