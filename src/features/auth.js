@@ -23,8 +23,8 @@ const authSlice = createSlice({
     isLoaded: false,
   },
   reducers: {
-    logout: (state) => {
-      state = {}
+    logout: (state, initialState) => {
+      state = { token: "", isLoaded: false }
       return state
     },
   },

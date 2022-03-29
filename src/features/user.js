@@ -45,6 +45,10 @@ const userSlice = createSlice({
       state.editName = true
       return state
     },
+    resetUser: (state, action) => {
+      state = { firstName: "", lastName: "", editName: false }
+      return state
+    },
   },
   extraReducers: {
     [fetchUserDatas.pending]: () => {
@@ -67,5 +71,5 @@ const userSlice = createSlice({
   },
 })
 
-export const { editName } = userSlice.actions
+export const { editName, resetUser } = userSlice.actions
 export default userSlice.reducer
