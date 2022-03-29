@@ -12,7 +12,7 @@ const Router = () => {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/user" element={<User />} />
+        <Route path="/profile" element={<User />} />
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="*" element={<PageNotFound />} />

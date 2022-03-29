@@ -21,7 +21,7 @@ const SignIn = () => {
     dispatch(fetchToken({ value }))
     const checkbox = document.querySelector("#checkbox")
     console.log(checkbox.checked)
-    navigate("/user")
+    navigate("/profile")
   }
 
   const handleCheckbox = (e) => {
