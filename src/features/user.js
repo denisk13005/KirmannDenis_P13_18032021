@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
-import { baseURL } from "../utils/axios"
+export const baseURL = "http://localhost:3001/api/v1"
 
 export const fetchUserDatas = createAsyncThunk(
   "user/fetchUserDatas",
