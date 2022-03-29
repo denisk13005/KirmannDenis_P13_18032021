@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import Account from "../../components/Account/Account"
 import EditUserName from "../../components/EditUserName/EditUserName"
@@ -20,14 +20,10 @@ const User = () => {
   const dispatch = useDispatch()
 
   if (editName === false && token !== "") {
-    console.log("here")
     dispatch(fetchUserDatas(token))
   }
-  console.log("token  ", token)
-  let loading = !token
-  console.log("loading  ", loading)
 
-  return !loading ? (
+  return token !== "" ? (
     token === "" ? (
       <PageNotFound />
     ) : (
