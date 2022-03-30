@@ -16,7 +16,7 @@ export const fetchUserDatas = createAsyncThunk(
         authorization: `Bearer ${token}`,
       },
     }).catch((err) => console.log(err))
-    console.log(res.data.body)
+
     return res.data.body
   }
 )
@@ -28,8 +28,7 @@ export const fetchUserDatas = createAsyncThunk(
 export const updateUserDatas = createAsyncThunk(
   "user/updateUserDatas",
   async ({ datas }) => {
-    console.log(datas)
-    await axios({
+    const res = await axios({
       method: "put",
       url: `${baseURL}/user/profile`,
       headers: {
@@ -40,6 +39,7 @@ export const updateUserDatas = createAsyncThunk(
         lastName: datas.lastName,
       },
     }).catch((err) => console.log(err))
+    return res.status.toString()
   }
 )
 
@@ -85,6 +85,12 @@ const userSlice = createSlice({
     },
     [fetchUserDatas.rejected]: () => {
       console.log("Rejected !")
+    },
+    [updateUserDatas.fulfilled]: (state, { payload }) => {
+      return {
+        ...state,
+        status: payload,
+      }
     },
   },
 })

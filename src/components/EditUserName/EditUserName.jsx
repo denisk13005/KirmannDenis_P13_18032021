@@ -16,15 +16,14 @@ const EditUserName = () => {
 
   const dispatch = useDispatch()
   const token = useSelector((state) => state.auth.token)
-
+  const updateStatus = useSelector((state) => state.user.status)
   const save = (e) => {
     e.preventDefault()
     console.log("save")
     let datas = { firstName, lastName, token }
     console.log(datas)
     token && dispatch(updateUserDatas({ datas }))
-    //200
-    dispatch(fetchUserDatas(token))
+    updateStatus === "200" ? dispatch(fetchUserDatas(token)) : dispatch(abort())
   }
   const cancel = () => {
     console.log("cancel")
