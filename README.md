@@ -6,10 +6,21 @@ Use an API for a bank user account with React
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Made with 
+## Made with
 
 ![JavaScript](https://img.shields.io/badge/Language-JS-yellow) ![REACT](https://img.shields.io/badge/Framework-React-blue) ![SASS](https://img.shields.io/badge/Style-SASS-ff69b4) ![Vercel](https://img.shields.io/badge/Deploy-Vercel-black) ![Redux](https://img.shields.io/badge/Library-Redux-blueviolet)
 
+## For launch this project you must download the backend
+
+Download the backend here [Backend](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API)
+
+Follow the Readme Instructions
+
+## For launch the Front End
+
+Download this project and install the dependencies whith
+
+### `npm install`
 
 ## Available Scripts
 
@@ -54,26 +65,4 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To See this Project Documentation [Project Doc](http://127.0.0.1:8080/docs/index.html)
