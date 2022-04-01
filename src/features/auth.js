@@ -1,7 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
 export const baseURL = "http://localhost:3001/api/v1"
-
+/**
+ * Async function for fetch user token
+ * @returns {String} userToken
+ */
 export const fetchToken = createAsyncThunk(
   "auth/fetchToken",
   async ({ value }) => {
@@ -13,6 +16,11 @@ export const fetchToken = createAsyncThunk(
     return response.data.body.token
   }
 )
+
+/**
+ * Slice auth of redux store
+ * @return {Object} redux store modified
+ */
 
 const authSlice = createSlice({
   //nom du slice

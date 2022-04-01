@@ -1,0 +1,23 @@
+.container {
+  margin: auto;
+  min-height: 75vh;
+  background-color: #12002b;
+  h1 {
+    width: 100%;
+    text-align: center;
+    font-size: 92px;
+    padding-top: 10vh;
+    color: aliceblue;
+    margin-bottom: 150px;
+    @media screen and (max-width: 800px) {
+      font-size: 64px;
+    }
+  }
+  a {
+    text-align: center;
+    color: aliceblue;
+    font-size: 32px;
+    text-decoration: none;
+    position: relative;
+  }
+}

@@ -1,6 +1,9 @@
 import React from "react"
 import "./footer.scss"
-
+/**
+ * Footer of Argent Bank
+ * @returns {ReactElement}
+ */
 const Footer = () => {
   return (
     <footer id="footer">

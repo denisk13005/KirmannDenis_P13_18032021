@@ -6,10 +6,21 @@ Use an API for a bank user account with React
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Made with 
+## Made with
 
 ![JavaScript](https://img.shields.io/badge/Language-JS-yellow) ![REACT](https://img.shields.io/badge/Framework-React-blue) ![SASS](https://img.shields.io/badge/Style-SASS-ff69b4) ![Vercel](https://img.shields.io/badge/Deploy-Vercel-black) ![Redux](https://img.shields.io/badge/Library-ReduxToolkit-blueviolet)
 
+## For launch this project you must download the backend
+
+Download the backend here [Backend](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API)
+
+Follow the Readme Instructions
+
+## For launch the Front End
+
+Download this project and install the dependencies whith
+
+### `npm install`
 
 ## Available Scripts
 
@@ -53,4 +64,7 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+To See this Project Documentation [Project Doc](http://127.0.0.1:8080/docs/index.html)
 

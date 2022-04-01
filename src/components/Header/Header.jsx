@@ -7,6 +7,10 @@ import { resetUser } from "../../features/user"
 
 import "./header.scss"
 
+/**
+ * Header
+ * @returns {ReactElement}
+ */
 const Header = () => {
   let firstname = useSelector((state) => state.user.firstName)
   let logged = useSelector((state) => state.auth.isLoaded)

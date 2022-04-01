@@ -6,7 +6,10 @@ import Header from "../Header/Header"
 import SignIn from "../../pages/SignIn/SignIn"
 import Footer from "../Footer/Footer"
 import PageNotFound from "../../pages/PageNotFound/PageNotFound"
-
+/**
+ * Router
+ * @returns {Router}
+ */
 const Router = () => {
   return (
     <BrowserRouter>

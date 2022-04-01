@@ -1,25 +1,29 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchUserDatas, updateUserDatas, abort } from "../../features/user"
 import "./editUserName.scss"
-
+/**
+ * For Change The UserName
+ * @returns {ReactElement}
+ */
 const EditUserName = () => {
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
+  const [firstPlaceHolder, setFirstPlaceHolder] = useState("")
+  const [lastPlaceHolder, setLastPlaceHolder] = useState("")
 
   const dispatch = useDispatch()
   const token = useSelector((state) => state.auth.token)
-
-  const navigate = useNavigate()
+  const updateStatus = useSelector((state) => state.user.status)
   const save = (e) => {
     e.preventDefault()
     console.log("save")
     let datas = { firstName, lastName, token }
     console.log(datas)
     token && dispatch(updateUserDatas({ datas }))
-    dispatch(fetchUserDatas(token))
+    updateStatus === "200" ? dispatch(fetchUserDatas(token)) : dispatch(abort())
   }
   const cancel = () => {
     console.log("cancel")
@@ -27,21 +31,27 @@ const EditUserName = () => {
     setLastName("")
     dispatch(abort())
   }
+  let first = useSelector((state) => state.user.firstName)
+  let last = useSelector((state) => state.user.lastName)
+  useEffect(() => {
+    setFirstPlaceHolder(first)
+    setLastPlaceHolder(last)
+  }, [first, last])
   return (
     <div className="editUserNameContainer">
       <div className="fieldContainer">
         <input
           type="text"
-          id="lastName"
-          placeholder="Tony"
+          id="firstName"
+          placeholder={firstPlaceHolder}
           color="red"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value.trim())}
         />
         <input
           type="text"
-          id="firstName"
-          placeholder="Jarvis"
+          id="lastName"
+          placeholder={lastPlaceHolder}
           value={lastName}
           onChange={(e) => setLastName(e.target.value.trim())}
         />
