@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Made with
 
-![JavaScript](https://img.shields.io/badge/Language-JS-yellow) ![REACT](https://img.shields.io/badge/Framework-React-blue) ![SASS](https://img.shields.io/badge/Style-SASS-ff69b4) ![Vercel](https://img.shields.io/badge/Deploy-Vercel-black) ![Redux](https://img.shields.io/badge/Library-Redux-blueviolet)
+![JavaScript](https://img.shields.io/badge/Language-JS-yellow) ![REACT](https://img.shields.io/badge/Framework-React-blue) ![SASS](https://img.shields.io/badge/Style-SASS-ff69b4) ![Vercel](https://img.shields.io/badge/Deploy-Vercel-black) ![Redux](https://img.shields.io/badge/Library-ReduxToolkit-blueviolet)
 
 ## For launch this project you must download the backend
 
@@ -65,4 +65,6 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
+
 To See this Project Documentation [Project Doc](http://127.0.0.1:8080/docs/index.html)
+
