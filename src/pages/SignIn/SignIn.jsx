@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { fetchToken } from "../../features/auth"
@@ -9,9 +9,9 @@ const SignIn = () => {
   const [password, setPassword] = useState("password123")
   const [checked, setChecked] = useState(false)
 
-  const state = useSelector((state) => state)
+  const token = useSelector((state) => state.auth.token)
+  console.log(token)
 
-  console.log(state)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -19,14 +19,16 @@ const SignIn = () => {
     e.preventDefault()
     let value = { username, password, checked }
     dispatch(fetchToken({ value }))
-    const checkbox = document.querySelector("#checkbox")
-    console.log(checkbox.checked)
-    navigate("/profile")
   }
 
   const handleCheckbox = (e) => {
     setChecked(e.target.checked)
   }
+  useEffect(() => {
+    if (token !== "" && token) {
+      navigate("/profile")
+    }
+  }, [token, navigate])
   console.log(checked)
   return (
     <div className="main">
