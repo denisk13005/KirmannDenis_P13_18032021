@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 import Account from "../../components/Account/Account"
 import EditUserName from "../../components/EditUserName/EditUserName"
@@ -12,7 +12,7 @@ import "./user.scss"
  *userDashboard
  * @returns {ReactElement}
  */
-const User = () => {
+const Profile = () => {
   const editName = useSelector((state) => state.user.editName)
 
   const token = useSelector((state) => state.auth.token)
@@ -44,4 +44,4 @@ const User = () => {
   )
 }
 
-export default User
+export default Profile
