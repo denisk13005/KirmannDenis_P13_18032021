@@ -12,7 +12,14 @@ export const fetchToken = createAsyncThunk(
       email: value.username,
       password: value.password,
     })
-    value.checked && localStorage.setItem("token", response.data.body.token)
+    if (value.checked) {
+      localStorage.clear()
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ username: value.username, password: value.password })
+      )
+    }
+
     return response.data.body.token
   }
 )

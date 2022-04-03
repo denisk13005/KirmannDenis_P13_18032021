@@ -5,12 +5,14 @@ import { fetchToken } from "../../features/auth"
 import "./signIn.scss"
 
 const SignIn = () => {
-  const [username, setUsername] = useState("tony@stark.com")
-  const [password, setPassword] = useState("password123")
+  const [username, setUsername] = useState(" ")
+  const [password, setPassword] = useState("")
   const [checked, setChecked] = useState(false)
 
   const token = useSelector((state) => state.auth.token)
   console.log(token)
+
+  let localStorage = JSON.parse(window.localStorage.user)
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -24,6 +26,11 @@ const SignIn = () => {
   const handleCheckbox = (e) => {
     setChecked(e.target.checked)
   }
+
+  useEffect(() => {
+    setUsername(localStorage.username)
+    setPassword(localStorage.password)
+  }, [localStorage.password, localStorage.username])
   useEffect(() => {
     if (token !== "" && token) {
       navigate("/profile")
