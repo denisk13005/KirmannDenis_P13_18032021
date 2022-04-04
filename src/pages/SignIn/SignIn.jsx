@@ -12,7 +12,9 @@ const SignIn = () => {
   const token = useSelector((state) => state.auth.token)
   console.log(token)
 
-  let localStorage = JSON.parse(window.localStorage.user)
+  let localStorage = window.localStorage.user
+    ? JSON.parse(window.localStorage.user)
+    : { username, password }
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -31,7 +33,7 @@ const SignIn = () => {
     setUsername(localStorage.username)
     setPassword(localStorage.password)
   }, [localStorage.password, localStorage.username])
-  
+
   useEffect(() => {
     if (token !== "" && token) {
       navigate("/profile")
@@ -50,7 +52,7 @@ const SignIn = () => {
               type="text"
               id="username"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => setUsername(e.target.value.trim())}
             />
           </div>
           <div className="input">
@@ -59,7 +61,7 @@ const SignIn = () => {
               type="password"
               id="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value.trim())}
             />
           </div>
           <div className="checkbox">
