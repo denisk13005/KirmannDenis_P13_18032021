@@ -31,6 +31,7 @@ const SignIn = () => {
     setUsername(localStorage.username)
     setPassword(localStorage.password)
   }, [localStorage.password, localStorage.username])
+  
   useEffect(() => {
     if (token !== "" && token) {
       navigate("/profile")
