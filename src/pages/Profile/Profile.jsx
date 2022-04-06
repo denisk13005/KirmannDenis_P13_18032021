@@ -17,13 +17,15 @@ const Profile = () => {
 
   const token = useSelector((state) => state.auth.token)
 
+  const isLoaded = useSelector((state) => state.auth.isLoaded)
+
   const dispatch = useDispatch()
 
   if (editName === false && token !== "") {
     dispatch(fetchUserDatas(token))
   }
 
-  return token !== "" ? (
+  return isLoaded ? (
     token === "" ? (
       <PageNotFound />
     ) : (
