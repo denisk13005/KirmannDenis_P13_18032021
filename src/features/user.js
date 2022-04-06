@@ -17,7 +17,6 @@ export const fetchUserDatas = createAsyncThunk(
         authorization: `Bearer ${token}`,
       },
     }).catch((err) => console.log(err))
-    console.log(res.status.toString())
     return { body: res.data.body, status: res.status }
   }
 )
