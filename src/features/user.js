@@ -76,7 +76,6 @@ const userSlice = createSlice({
       console.log("Pending")
     },
     [fetchUserDatas.fulfilled]: (state, { payload }) => {
-      console.log(payload)
       console.log("Fetch Successfully !")
       return {
         firstName: payload.body.firstName,

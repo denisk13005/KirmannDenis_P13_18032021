@@ -10,7 +10,6 @@ const SignIn = () => {
   const [checked, setChecked] = useState(false)
 
   const token = useSelector((state) => state.auth.token)
-  console.log(token)
 
   let localStorage = window.localStorage.user
     ? JSON.parse(window.localStorage.user)
@@ -35,12 +34,6 @@ const SignIn = () => {
     setPassword(localStorage.password)
   }, [localStorage.password, localStorage.username])
 
-  // useEffect(() => {
-  //   if (token !== "" && token) {
-  //     navigate("/profile")
-  //   }
-  // }, [token, navigate])
-  console.log(checked)
   return (
     <div className="main">
       <div className="signInContainer">
