@@ -4,6 +4,7 @@ export const baseURL = "http://localhost:3001/api/v1"
 
 /**
  * Async Function  for fetching user datas
+ * @param {string} token user token
  * @returns {Object} userDatas
  */
 export const fetchUserDatas = createAsyncThunk(
@@ -22,6 +23,8 @@ export const fetchUserDatas = createAsyncThunk(
 
 /**
  * async function for updating user name
+ * @param {object} datas first and last name changed
+ * @returns {string} request status
  *
  */
 export const updateUserDatas = createAsyncThunk(

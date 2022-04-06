@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
 import argentBankLogo from "../../assets/argentBankLogo.png"
@@ -14,10 +14,6 @@ import "./header.scss"
 const Header = () => {
   let firstname = useSelector((state) => state.user.firstName)
   let logged = useSelector((state) => state.auth.isLoaded)
-
-  //to SignIn
-  //user LastName
-  //take the state
 
   const dispatch = useDispatch()
   //when the state status changed change logged to true

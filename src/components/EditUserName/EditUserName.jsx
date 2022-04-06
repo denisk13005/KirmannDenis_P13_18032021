@@ -1,5 +1,4 @@
 import React, { useEffect } from "react"
-import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchUserDatas, updateUserDatas, abort } from "../../features/user"
@@ -9,12 +8,15 @@ import "./editUserName.scss"
  * @returns {ReactElement}
  */
 const EditUserName = () => {
+  //local state
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [firstPlaceHolder, setFirstPlaceHolder] = useState("")
   const [lastPlaceHolder, setLastPlaceHolder] = useState("")
 
   const dispatch = useDispatch()
+
+  //global state
   const token = useSelector((state) => state.auth.token)
   const updateStatus = useSelector((state) => state.user.status)
   const save = (e) => {
