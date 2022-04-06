@@ -17,7 +17,8 @@ export const fetchUserDatas = createAsyncThunk(
         authorization: `Bearer ${token}`,
       },
     }).catch((err) => console.log(err))
-    return res.data.body
+    console.log(res.status.toString())
+    return { body: res.data.body, status: res.status }
   }
 )
 
@@ -41,7 +42,7 @@ export const updateUserDatas = createAsyncThunk(
         lastName: datas.lastName,
       },
     }).catch((err) => console.log(err))
-    return res.status.toString()
+    return res.status
   }
 )
 
@@ -61,7 +62,7 @@ const userSlice = createSlice({
       state.editName = true
       return state
     },
-    resetUser: (state, action) => {
+    resetUser: (state) => {
       state = { firstName: "", lastName: "", editName: false }
       return state
     },
@@ -75,13 +76,15 @@ const userSlice = createSlice({
       console.log("Pending")
     },
     [fetchUserDatas.fulfilled]: (state, { payload }) => {
+      console.log(payload)
       console.log("Fetch Successfully !")
       return {
-        firstName: payload.firstName,
-        lastName: payload.lastName,
-        id: payload.id,
-        createdAt: payload.createdAt,
-        updatedAt: payload.updatedAt,
+        firstName: payload.body.firstName,
+        lastName: payload.body.lastName,
+        id: payload.body.id,
+        createdAt: payload.body.createdAt,
+        updatedAt: payload.body.updatedAt,
+        status: payload.status,
         editName: false,
       }
     },

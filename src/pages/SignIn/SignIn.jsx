@@ -23,6 +23,7 @@ const SignIn = () => {
     e.preventDefault()
     let value = { username, password, checked }
     dispatch(fetchToken({ value }))
+    navigate("/profile")
   }
 
   const handleCheckbox = (e) => {
@@ -34,11 +35,11 @@ const SignIn = () => {
     setPassword(localStorage.password)
   }, [localStorage.password, localStorage.username])
 
-  useEffect(() => {
-    if (token !== "" && token) {
-      navigate("/profile")
-    }
-  }, [token, navigate])
+  // useEffect(() => {
+  //   if (token !== "" && token) {
+  //     navigate("/profile")
+  //   }
+  // }, [token, navigate])
   console.log(checked)
   return (
     <div className="main">

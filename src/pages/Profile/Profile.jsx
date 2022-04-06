@@ -17,7 +17,7 @@ const Profile = () => {
 
   const token = useSelector((state) => state.auth.token)
 
-  const isLoaded = useSelector((state) => state.auth.isLoaded)
+  const status = useSelector((state) => state.user.status)
 
   const dispatch = useDispatch()
 
@@ -25,7 +25,7 @@ const Profile = () => {
     dispatch(fetchUserDatas(token))
   }
 
-  return isLoaded ? (
+  return status ? (
     token === "" ? (
       <PageNotFound />
     ) : (
