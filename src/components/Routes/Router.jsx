@@ -1,6 +1,6 @@
 import React from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import User from "../../pages/User/User"
+import Profile from "../../pages/Profile/Profile"
 import Home from "../../pages/Home/Home"
 import Header from "../Header/Header"
 import SignIn from "../../pages/SignIn/SignIn"
@@ -15,7 +15,7 @@ const Router = () => {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/profile" element={<User />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="*" element={<PageNotFound />} />

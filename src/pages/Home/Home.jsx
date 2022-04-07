@@ -1,12 +1,24 @@
-import React from "react"
+import React, { useState } from "react"
 import bankTree from "../../assets/bank-tree.jpeg"
 import bill from "../../assets/icon-money.png"
 import msg from "../../assets/icon-chat.png"
 import security from "../../assets/icon-security.png"
 import "./home.scss"
+import Spinner from "../../components/Spinner/Spinner"
+import { useEffect } from "react"
 
 const Home = () => {
-  return (
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    setTimeout(() => setLoading(true), 1000)
+
+    return () => {
+      clearTimeout()
+    }
+  }, [])
+
+  return loading ? (
     <main id="homeContainer">
       <section className="homeSection">
         <img src={bankTree} alt="plant" />
@@ -50,6 +62,8 @@ const Home = () => {
         </div>
       </section>
     </main>
+  ) : (
+    <Spinner />
   )
 }
 

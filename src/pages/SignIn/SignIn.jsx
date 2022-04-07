@@ -5,12 +5,15 @@ import { fetchToken } from "../../features/auth"
 import "./signIn.scss"
 
 const SignIn = () => {
-  const [username, setUsername] = useState("tony@stark.com")
-  const [password, setPassword] = useState("password123")
+  const [username, setUsername] = useState(" ")
+  const [password, setPassword] = useState("")
   const [checked, setChecked] = useState(false)
 
   const token = useSelector((state) => state.auth.token)
-  console.log(token)
+
+  let localStorage = window.localStorage.user
+    ? JSON.parse(window.localStorage.user)
+    : { username, password }
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -19,17 +22,18 @@ const SignIn = () => {
     e.preventDefault()
     let value = { username, password, checked }
     dispatch(fetchToken({ value }))
+    navigate("/profile")
   }
 
   const handleCheckbox = (e) => {
     setChecked(e.target.checked)
   }
+
   useEffect(() => {
-    if (token !== "" && token) {
-      navigate("/profile")
-    }
-  }, [token, navigate])
-  console.log(checked)
+    setUsername(localStorage.username)
+    setPassword(localStorage.password)
+  }, [localStorage.password, localStorage.username])
+
   return (
     <div className="main">
       <div className="signInContainer">
@@ -42,7 +46,7 @@ const SignIn = () => {
               type="text"
               id="username"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => setUsername(e.target.value.trim())}
             />
           </div>
           <div className="input">
@@ -51,7 +55,7 @@ const SignIn = () => {
               type="password"
               id="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value.trim())}
             />
           </div>
           <div className="checkbox">

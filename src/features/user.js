@@ -4,6 +4,7 @@ export const baseURL = "http://localhost:3001/api/v1"
 
 /**
  * Async Function  for fetching user datas
+ * @param {string} token user token
  * @returns {Object} userDatas
  */
 export const fetchUserDatas = createAsyncThunk(
@@ -16,13 +17,14 @@ export const fetchUserDatas = createAsyncThunk(
         authorization: `Bearer ${token}`,
       },
     }).catch((err) => console.log(err))
-
-    return res.data.body
+    return { body: res.data.body, status: res.status }
   }
 )
 
 /**
  * async function for updating user name
+ * @param {object} datas first and last name changed
+ * @returns {string} request status
  *
  */
 export const updateUserDatas = createAsyncThunk(
@@ -39,7 +41,7 @@ export const updateUserDatas = createAsyncThunk(
         lastName: datas.lastName,
       },
     }).catch((err) => console.log(err))
-    return res.status.toString()
+    return res.status
   }
 )
 
@@ -59,7 +61,7 @@ const userSlice = createSlice({
       state.editName = true
       return state
     },
-    resetUser: (state, action) => {
+    resetUser: (state) => {
       state = { firstName: "", lastName: "", editName: false }
       return state
     },
@@ -75,11 +77,12 @@ const userSlice = createSlice({
     [fetchUserDatas.fulfilled]: (state, { payload }) => {
       console.log("Fetch Successfully !")
       return {
-        firstName: payload.firstName,
-        lastName: payload.lastName,
-        id: payload.id,
-        createdAt: payload.createdAt,
-        updatedAt: payload.updatedAt,
+        firstName: payload.body.firstName,
+        lastName: payload.body.lastName,
+        id: payload.body.id,
+        createdAt: payload.body.createdAt,
+        updatedAt: payload.body.updatedAt,
+        status: payload.status,
         editName: false,
       }
     },
