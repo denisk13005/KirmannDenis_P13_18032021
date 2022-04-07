@@ -54,3 +54,16 @@ Parmi les éléments clés à spécifier pour chaque endpoint de l’API il faud
     Les différentes réponses avec les codes de réponse correspondants qui ont un sens pour cet endpoint (ex. : 404 : réponse d'erreur d'article inconnu).
 
 
+
+
+lever profile dans les endpoints
+
+lever le body du delete et ajouter details dans l'url
+
+patch
+
+array pour la réponse get des transactions details
+
+startdate end date sur le premier get
+
+retour booleen sur delete
