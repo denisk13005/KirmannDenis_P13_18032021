@@ -151,15 +151,7 @@ paths:
         "200":
           description: User month transactions retrieved successully
           schema:
-            type: object
-            properties:
-              body:
-                type: object
-                properties:
-                  transaction:
-                    type: array
-                    items:
-                      $ref: "#/definitions/MonthTransactionsResponse"
+            $ref: "#/definitions/MonthTransactionsResponse"
 
         "400":
           description: Invalid Fields
@@ -191,7 +183,18 @@ paths:
         "200":
           description: User month details transactions retrieved successully
           schema:
-            $ref: "#/definitions/MonthTransactionsResponse"
+            # type: object
+            # properties:
+            #   body:
+            #     type: object
+            #     properties:
+            #       status:
+            #         type: number
+            #       message:
+            #         type: string
+            #       transaction:
+            $ref: "#/definitions/DetailsTransactionResponse"
+
         "400":
           description: Invalid Fields
         "500":
@@ -226,7 +229,8 @@ paths:
         "200":
           description: details transactions with add or edit notes or category  successfully
           schema:
-            $ref: "#/definitions/MonthTransactionsResponse"
+            $ref: "#/definitions/DetailsTransactionResponse"
+
         "400":
           description: Invalid Fields
         "500":
@@ -330,20 +334,40 @@ definitions:
       body:
         type: object
         properties:
-          date:
-            type: string
-          decription:
-            type: string
-          amount:
-            type: number
-          balance:
-            type: number
-          transactionType:
-            type: string
-          categoryFood:
-            type: string
-          notes:
-            type: string
+          transactions:
+            type: array
+            items:
+              $ref: "#/definitions/DetailsTransaction"
+
+  DetailsTransaction:
+    type: object
+    properties:
+      date:
+        type: string
+      decription:
+        type: string
+      amount:
+        type: number
+      balance:
+        type: number
+      transactionType:
+        type: string
+      categoryFood:
+        type: string
+      notes:
+        type: string
+  DetailsTransactionResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+      body:
+        type: object
+        properties:
+          transaction:
+            $ref: "#/definitions/DetailsTransaction"
   AddDetails:
     type: object
     properties:
