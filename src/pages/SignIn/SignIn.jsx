@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { useSelector, useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { fetchToken } from "../../features/auth"
 import "./signIn.scss"
@@ -8,8 +8,6 @@ const SignIn = () => {
   const [username, setUsername] = useState(" ")
   const [password, setPassword] = useState("")
   const [checked, setChecked] = useState(false)
-
-  const token = useSelector((state) => state.auth.token)
 
   let localStorage = window.localStorage.user
     ? JSON.parse(window.localStorage.user)
