@@ -183,16 +183,6 @@ paths:
         "200":
           description: User month details transactions retrieved successully
           schema:
-            # type: object
-            # properties:
-            #   body:
-            #     type: object
-            #     properties:
-            #       status:
-            #         type: number
-            #       message:
-            #         type: string
-            #       transaction:
             $ref: "#/definitions/DetailsTransactionResponse"
 
         "400":
@@ -371,10 +361,7 @@ definitions:
   AddDetails:
     type: object
     properties:
-      body:
-        type: object
-        properties:
-          categoryFood:
-            type: string
-          notes:
-            type: string
+      categoryFood:
+        type: string
+      notes:
+        type: string
