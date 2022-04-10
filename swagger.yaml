@@ -126,6 +126,18 @@ paths:
           description: Attach Bearer JWT token
           required: true
           type: string
+        - in: path
+          name: startDate
+          description: first day of research
+          type: string
+          required: true
+          format: DD/MM
+        - in: path
+          name: endDate
+          description: last day of research
+          type: string
+          required: true
+          format: DD/MM
         - in: body
           name: Account id
           description: Id Of Selected Account
@@ -139,19 +151,28 @@ paths:
         "200":
           description: User month transactions retrieved successully
           schema:
-            $ref: "#/definitions/MonthTransactionsResponse"
+            type: object
+            properties:
+              body:
+                type: object
+                properties:
+                  transaction:
+                    type: array
+                    items:
+                      $ref: "#/definitions/MonthTransactionsResponse"
+
         "400":
           description: Invalid Fields
         "500":
           description: Internal Server Error
 
-  /transactions/{transactionId}:
+  /transactions/{transactionId}/details:
     get:
       security:
         - Bearer: []
       tags:
         - Transaction
-      summary: Transaction Details Transactions
+      summary: Transaction Details
       description: See the month user transactions in details
       parameters:
         - in: header
@@ -159,13 +180,11 @@ paths:
           description: Attach Bearer JWT token
           required: true
           type: string
-        - in: body
-          name: Transaction id
-          description: Id Of Selected Transaction
+        - in: path
+          name: transactionId
+          type: integer
           required: true
-          schema:
-            $ref: "#/definitions/MonthTransactions"
-
+          description: Numeric ID of the account to get
       produces:
         - application/json
       responses:
@@ -177,32 +196,35 @@ paths:
           description: Invalid Fields
         "500":
           description: Internal Server Error
-
-  /transactions/{transactionId}/notes:
     patch:
       security:
         - Bearer: []
       tags:
-        - Transaction Notes
-      summary: User Add Note
-      description: Add Note To His Transaction Detail
+        - Transaction Details
+      summary: Add Or Edit A Note Or Category
+      description: Add Or Edit A Note Or Category To His Transaction Details
       parameters:
         - in: header
           name: Authorization
           description: Attach Bearer JWT token
           required: true
           type: string
+        - in: path
+          name: transactionId
+          type: integer
+          required: true
+          description: Numeric ID of the account for add or modif a note
         - in: body
-          name: AddNote API
-          description: Add A Note In Transaction
+          name: Add Or Edit A Note Or Category
+          description: Add or edit a note or category in transaction details
           required: true
           schema:
-            $ref: "#/definitions/AddNote"
+            $ref: "#/definitions/AddDetails"
       produces:
         - application/json
       responses:
         "200":
-          description: User month details transactions with add notes successully
+          description: details transactions with add or edit notes or category  successfully
           schema:
             $ref: "#/definitions/MonthTransactionsResponse"
         "400":
@@ -214,28 +236,26 @@ paths:
       security:
         - Bearer: []
       tags:
-        - Transaction Notes
-      summary: User Delete Note
-      description: User Delete Note To His Transaction Detail
+        - Transaction Details
+      summary: Delete Note And Category
+      description: User delete note and category to his transaction details
       parameters:
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
+        - in: path
+          name: transactionId
+          type: integer
           required: true
-          type: string
-        - in: body
-          name: DeleteNote API
-          description: Delete A Transaction Info
-          required: true
-          schema:
-            $ref: "#/definitions/AddNote"
+          description: transaction ID to delete details
       produces:
         - application/json
       responses:
         "200":
-          description: User month details transactions whith delete note retrieved successully
+          description: delete details retrieved successully
           schema:
-            $ref: "#/definitions/MonthTransactionsResponse"
+            type: object
+            properties:
+              deleted:
+                type: boolean
+
         "400":
           description: Invalid Fields
         "500":
@@ -299,7 +319,7 @@ definitions:
     type: object
     properties:
       id:
-        type: string
+        type: number
   MonthTransactionsResponse:
     type: object
     properties:
@@ -324,11 +344,9 @@ definitions:
             type: string
           notes:
             type: string
-  AddNote:
+  AddDetails:
     type: object
     properties:
-      id:
-        type: integer
       body:
         type: object
         properties:
