@@ -112,7 +112,7 @@ paths:
           description: Invalid Fields
         "500":
           description: Internal Server Error
-  /transactions/{startDate}/{endDate}:
+  /transactions/{accountId}?q={startDate,endDate}:
     get:
       security:
         - Bearer: []
@@ -126,24 +126,23 @@ paths:
           description: Attach Bearer JWT token
           required: true
           type: string
-        - in: path
+        - in: query
           name: startDate
           description: first day of research
           type: string
           required: true
-          format: DD/MM
-        - in: path
+          format: DD/MM/YYYY
+        - in: query
           name: endDate
           description: last day of research
           type: string
           required: true
-          format: DD/MM
-        - in: body
+          format: DD/MM/YYYY
+        - in: path
+          type: number
           name: Account id
           description: Id Of Selected Account
           required: true
-          schema:
-            $ref: "#/definitions/MonthTransactions"
 
       produces:
         - application/json
@@ -158,7 +157,7 @@ paths:
         "500":
           description: Internal Server Error
 
-  /transactions/{transactionId}/details:
+  /transactions/{transactionId}:
     get:
       security:
         - Bearer: []
