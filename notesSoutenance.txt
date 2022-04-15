@@ -1,0 +1,36 @@
+PHASE1 : AUTHENTIFICATION DES UTILISATEURS
+	* connection
+	* modif profil
+
+
+
+
+PHASE 2 : TRANSACTION
+
+	*viualiser ttes les transactions du mois en cours ( entre 2 dates données )
+	*visualiser es détails d'une transaxtion dans une autre vue
+	*ajouter modifier ou supprimer des informantions (notes, categories) d'une transaction
+
+
+    La méthode HTTP (ex. : GET, POST, etc.)
+    La route (ex. : /store/inventory)
+    La description de ce à quoi correspond l’endpoint (ex. : Retour de l'inventaire des animaux de compagnie)
+    Les paramètres possibles pour tenir compte des différents scénarios (ex. : itemId (facultatif) = ID de l'article 	spécifique à demander à la base de données d'inventaire).
+    Les différentes réponses avec les codes de réponse correspondants qui ont un sens pour cet endpoint (ex. : 404 : 	réponse d'erreur d'article inconnu).
+
+
+DEMONSTRATION DU SITE , MONTRER :
+	*visite de la page d'accueil
+	*connection
+	*déconnection
+	*voir ses infos APRES s'être connecté
+	*modifier son profil
+
+
+patch fusionne les données modifiées avec les données existante
+put devrait remplacé par null les données non renDseignées
+
+
+
+ajouter année
+richard derson norme rest
